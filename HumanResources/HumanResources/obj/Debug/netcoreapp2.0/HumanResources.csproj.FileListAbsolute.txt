@@ -1,0 +1,11 @@
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\bin\Debug\netcoreapp2.0\HumanResources.deps.json
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\bin\Debug\netcoreapp2.0\HumanResources.runtimeconfig.json
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\bin\Debug\netcoreapp2.0\HumanResources.runtimeconfig.dev.json
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\bin\Debug\netcoreapp2.0\HumanResources.dll
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\bin\Debug\netcoreapp2.0\HumanResources.pdb
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\obj\Debug\netcoreapp2.0\HumanResources.csprojAssemblyReference.cache
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\obj\Debug\netcoreapp2.0\HumanResources.csproj.CoreCompileInputs.cache
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\obj\Debug\netcoreapp2.0\HumanResources.AssemblyInfoInputs.cache
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\obj\Debug\netcoreapp2.0\HumanResources.AssemblyInfo.cs
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\obj\Debug\netcoreapp2.0\HumanResources.dll
+D:\Repositorios\HumanResources\HumanResources\HumanResources\HumanResources\obj\Debug\netcoreapp2.0\HumanResources.pdb
