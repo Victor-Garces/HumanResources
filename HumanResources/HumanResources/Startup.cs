@@ -36,6 +36,7 @@ namespace HumanResources
             services.AddMvc().AddFluentValidation(configuration =>
                 {
                     configuration.RegisterValidatorsFromAssemblyContaining<CompetitionValidator>();
+                    configuration.RegisterValidatorsFromAssemblyContaining<LanguageValidator>();
                 });
         }
 

@@ -6,11 +6,10 @@ namespace HumanResources.SqlServer
 {
     public class HumanResourceContext : DbContext
     {
-        public HumanResourceContext(DbContextOptions options) : base(options)
-        {
-        }
+        public HumanResourceContext(DbContextOptions options) : base(options) { }
 
         internal DbSet<Competition> Competitions { get; set; }
+        internal DbSet<Language> Languages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +21,7 @@ namespace HumanResources.SqlServer
         private void ApplyConfigurations(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CompetitionConfiguration());
+            modelBuilder.ApplyConfiguration(new LanguageConfiguration());
         }
     }
 }
