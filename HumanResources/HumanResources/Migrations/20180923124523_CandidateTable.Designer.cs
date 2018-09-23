@@ -4,14 +4,16 @@ using HumanResources.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HumanResources.Migrations
 {
     [DbContext(typeof(HumanResourceContext))]
-    partial class HumanResourceContextModelSnapshot : ModelSnapshot
+    [Migration("20180923124523_CandidateTable")]
+    partial class CandidateTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +27,7 @@ namespace HumanResources.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("newsequentialid()");
 
-                    b.Property<double>("AspiratedSalary");
+                    b.Property<int>("AspiratedSalary");
 
                     b.Property<string>("Department")
                         .IsRequired();
@@ -46,13 +48,12 @@ namespace HumanResources.Migrations
 
                     b.Property<string>("RecommendBy");
 
-                    b.Property<Guid>("WorkExperienceId");
+                    b.Property<string>("WorkExperience")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.HasIndex("PositionId");
-
-                    b.HasIndex("WorkExperienceId");
 
                     b.ToTable("Candidates");
                 });
@@ -140,39 +141,11 @@ namespace HumanResources.Migrations
                     b.ToTable("Trainings");
                 });
 
-            modelBuilder.Entity("HumanResources.SqlServer.Models.WorkExperience", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("newsequentialid()");
-
-                    b.Property<string>("Company")
-                        .IsRequired();
-
-                    b.Property<DateTime>("DateFrom");
-
-                    b.Property<DateTime>("DateTo");
-
-                    b.Property<string>("OccupiedPosition")
-                        .IsRequired();
-
-                    b.Property<double>("Salary");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WorkExperiences");
-                });
-
             modelBuilder.Entity("HumanResources.SqlServer.Models.Candidate", b =>
                 {
                     b.HasOne("HumanResources.SqlServer.Models.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanResources.SqlServer.Models.WorkExperience", "WorkExperience")
-                        .WithMany()
-                        .HasForeignKey("WorkExperienceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
