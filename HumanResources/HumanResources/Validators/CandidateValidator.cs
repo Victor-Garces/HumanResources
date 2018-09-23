@@ -13,7 +13,7 @@ namespace HumanResources.Validators
             RuleFor(candidate => candidate.MainCompetences).NotEmpty();
             RuleFor(candidate => candidate.MainTrainings).NotEmpty();
             RuleFor(candidate => candidate.Name).NotEmpty();
-            RuleFor(candidate => candidate.WorkExperience).NotEmpty();
+            RuleFor(candidate => candidate.WorkExperienceId).NotEmpty();
             RuleFor(candidate => candidate.AspiratedSalary).NotEmpty();
         }
     }

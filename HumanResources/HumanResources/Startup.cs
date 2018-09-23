@@ -40,6 +40,7 @@ namespace HumanResources
                     configuration.RegisterValidatorsFromAssemblyContaining<TrainingValidator>();
                     configuration.RegisterValidatorsFromAssemblyContaining<PositionValidator>();
                     configuration.RegisterValidatorsFromAssemblyContaining<CandidateValidator>();
+                    configuration.RegisterValidatorsFromAssemblyContaining<WorkExperienceValidator>();
                 });
         }
 
