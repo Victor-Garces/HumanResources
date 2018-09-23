@@ -10,6 +10,7 @@ namespace HumanResources.SqlServer.Configurations
         {
             builder.HasKey(competition => competition.Id);
             builder.Property(competition => competition.Id).HasDefaultValueSql("newsequentialid()");
+            builder.HasIndex(competition => new { competition.Description, competition.Status}).IsUnique();
             builder.Property(competition => competition.Description).IsRequired();
         }
     }

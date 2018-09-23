@@ -1,4 +1,6 @@
-﻿using HumanResources.SqlServer;
+﻿using FluentValidation.AspNetCore;
+using HumanResources.SqlServer;
+using HumanResources.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +27,16 @@ namespace HumanResources
         {
             services.AddDbContext<HumanResourceContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("HumanResourcesDatabase")));
             services.AddMvc();
+
+            AddFluentValidationConfiguration(services);
+        }
+
+        static void AddFluentValidationConfiguration(IServiceCollection services)
+        {
+            services.AddMvc().AddFluentValidation(configuration =>
+                {
+                    configuration.RegisterValidatorsFromAssemblyContaining<CompetitionValidator>();
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
