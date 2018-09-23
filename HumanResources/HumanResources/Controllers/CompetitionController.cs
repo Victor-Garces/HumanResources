@@ -61,7 +61,7 @@ namespace HumanResources.Controllers
         }
 
         [HttpPut("{competitionId}")]
-        public IActionResult GetCompetition(Guid competitionId, [FromBody] Competition competition)
+        public IActionResult UpdateCompetition(Guid competitionId, [FromBody] Competition competition)
         {
             if (!ModelState.IsValid)
             {

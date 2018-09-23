@@ -10,6 +10,7 @@ namespace HumanResources.SqlServer
 
         internal DbSet<Competition> Competitions { get; set; }
         internal DbSet<Language> Languages { get; set; }
+        internal DbSet<Training> Trainings { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,7 @@ namespace HumanResources.SqlServer
         {
             modelBuilder.ApplyConfiguration(new CompetitionConfiguration());
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
+            modelBuilder.ApplyConfiguration(new TrainingConfiguration());
         }
     }
 }

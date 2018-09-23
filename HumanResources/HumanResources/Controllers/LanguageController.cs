@@ -61,7 +61,7 @@ namespace HumanResources.Controllers
         }
 
         [HttpPut("{languageId}")]
-        public IActionResult GetLanguages(Guid languageId, [FromBody] Language language)
+        public IActionResult UpdateLanguages(Guid languageId, [FromBody] Language language)
         {
             if (!ModelState.IsValid)
             {
