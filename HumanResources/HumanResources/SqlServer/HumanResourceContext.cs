@@ -14,6 +14,7 @@ namespace HumanResources.SqlServer
         internal DbSet<Position> Positions { get; set; }
         internal DbSet<Candidate> Candidates { get; set; }
         internal DbSet<WorkExperience> WorkExperiences { get; set; }
+        internal DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,6 +31,7 @@ namespace HumanResources.SqlServer
             modelBuilder.ApplyConfiguration(new PositionConfiguration());
             modelBuilder.ApplyConfiguration(new CandidateConfiguration());
             modelBuilder.ApplyConfiguration(new WorkExperienceConfiguration());
+            modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
         }
     }
 }

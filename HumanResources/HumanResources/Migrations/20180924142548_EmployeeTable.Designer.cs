@@ -4,14 +4,16 @@ using HumanResources.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HumanResources.Migrations
 {
     [DbContext(typeof(HumanResourceContext))]
-    partial class HumanResourceContextModelSnapshot : ModelSnapshot
+    [Migration("20180924142548_EmployeeTable")]
+    partial class EmployeeTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
