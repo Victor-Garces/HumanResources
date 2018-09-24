@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HumanResources.SqlServer.Models
 {
@@ -13,12 +14,14 @@ namespace HumanResources.SqlServer.Models
 
         public string Department { get; set; }
         public double AspiratedSalary { get; set; }
-        public string MainCompetences { get; set; }
-        public string MainTrainings { get; set; }
 
         public WorkExperience WorkExperience { get; set; }
         public Guid WorkExperienceId { get; set; }
 
         public string RecommendBy { get; set; }
+
+        public ISet<Competition> Competitions { get; set; }
+
+        public ISet<Training> Trainings { get; set; }
     }
 }

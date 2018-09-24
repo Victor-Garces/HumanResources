@@ -11,5 +11,8 @@ namespace HumanResources.SqlServer.Models
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public string Institution { get; set; }
+
+        public Candidate Candidate { get; set; }
+        public Guid CandidateId { get; set; }   
     }
 }

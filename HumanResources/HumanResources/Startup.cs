@@ -1,4 +1,5 @@
-﻿using FluentValidation.AspNetCore;
+﻿using AutoMapper;
+using FluentValidation.AspNetCore;
 using HumanResources.SqlServer;
 using HumanResources.Validators;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +27,7 @@ namespace HumanResources
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HumanResourceContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("HumanResourcesDatabase")));
+            services.AddAutoMapper();
             services.AddMvc();
 
             AddFluentValidationConfiguration(services);

@@ -8,5 +8,8 @@ namespace HumanResources.SqlServer.Models
         public Guid Id { get; set; }
         public string Description { get; set; }
         public CompetitionStatus Status { get; set; }
+
+        public Candidate Candidate { get; set; }
+        public Guid CandidateId { get; set; }
     }
 }

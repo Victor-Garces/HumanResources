@@ -4,14 +4,16 @@ using HumanResources.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HumanResources.Migrations
 {
     [DbContext(typeof(HumanResourceContext))]
-    partial class HumanResourceContextModelSnapshot : ModelSnapshot
+    [Migration("20180924010334_CandidateFieldsCompetitionsAndTrainings")]
+    partial class CandidateFieldsCompetitionsAndTrainings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +59,7 @@ namespace HumanResources.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("newsequentialid()");
 
-                    b.Property<Guid>("CandidateId");
+                    b.Property<Guid?>("CandidateId");
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -121,7 +123,7 @@ namespace HumanResources.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("newsequentialid()");
 
-                    b.Property<Guid>("CandidateId");
+                    b.Property<Guid?>("CandidateId");
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -182,16 +184,14 @@ namespace HumanResources.Migrations
                 {
                     b.HasOne("HumanResources.SqlServer.Models.Candidate", "Candidate")
                         .WithMany("Competitions")
-                        .HasForeignKey("CandidateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CandidateId");
                 });
 
             modelBuilder.Entity("HumanResources.SqlServer.Models.Training", b =>
                 {
                     b.HasOne("HumanResources.SqlServer.Models.Candidate", "Candidate")
                         .WithMany("Trainings")
-                        .HasForeignKey("CandidateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CandidateId");
                 });
 #pragma warning restore 612, 618
         }
