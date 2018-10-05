@@ -1,5 +1,6 @@
 ﻿using HumanResources.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace HumanResources.SqlServer.Models
 {
@@ -9,7 +10,6 @@ namespace HumanResources.SqlServer.Models
         public string Description { get; set; }
         public CompetitionStatus Status { get; set; }
 
-        public Candidate Candidate { get; set; }
-        public Guid CandidateId { get; set; }
+        public ISet<CandidateCompetition> CandidateCompetitions { get; set; }
     }
 }

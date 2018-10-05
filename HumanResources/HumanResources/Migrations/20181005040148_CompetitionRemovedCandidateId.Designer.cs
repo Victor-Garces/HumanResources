@@ -4,14 +4,16 @@ using HumanResources.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HumanResources.Migrations
 {
     [DbContext(typeof(HumanResourceContext))]
-    partial class HumanResourceContextModelSnapshot : ModelSnapshot
+    [Migration("20181005040148_CompetitionRemovedCandidateId")]
+    partial class CompetitionRemovedCandidateId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,29 +53,13 @@ namespace HumanResources.Migrations
                     b.ToTable("Candidates");
                 });
 
-            modelBuilder.Entity("HumanResources.SqlServer.Models.CandidateCompetition", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("CandidateId");
-
-                    b.Property<Guid>("CompetitionId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CandidateId");
-
-                    b.HasIndex("CompetitionId");
-
-                    b.ToTable("CandidateCompetition");
-                });
-
             modelBuilder.Entity("HumanResources.SqlServer.Models.Competition", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("newsequentialid()");
+
+                    b.Property<Guid?>("CandidateId");
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -81,6 +67,8 @@ namespace HumanResources.Migrations
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CandidateId");
 
                     b.HasIndex("Description", "Status")
                         .IsUnique();
@@ -223,17 +211,11 @@ namespace HumanResources.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanResources.SqlServer.Models.CandidateCompetition", b =>
+            modelBuilder.Entity("HumanResources.SqlServer.Models.Competition", b =>
                 {
-                    b.HasOne("HumanResources.SqlServer.Models.Candidate", "Candidate")
+                    b.HasOne("HumanResources.SqlServer.Models.Candidate")
                         .WithMany("Competitions")
-                        .HasForeignKey("CandidateId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanResources.SqlServer.Models.Competition", "Competition")
-                        .WithMany("CandidateCompetitions")
-                        .HasForeignKey("CompetitionId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CandidateId");
                 });
 
             modelBuilder.Entity("HumanResources.SqlServer.Models.Employee", b =>

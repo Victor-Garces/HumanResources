@@ -29,6 +29,16 @@ namespace HumanResources
             services.AddDbContext<HumanResourceContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("HumanResourcesDatabase")));
             services.AddAutoMapper();
             services.AddMvc();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
 
             AddFluentValidationConfiguration(services);
         }
@@ -53,7 +63,7 @@ namespace HumanResources
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("AllowAllHeaders");
             app.UseMvc();
         }
     }
