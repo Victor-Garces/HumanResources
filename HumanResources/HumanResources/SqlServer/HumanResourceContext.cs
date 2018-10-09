@@ -34,6 +34,7 @@ namespace HumanResources.SqlServer
             modelBuilder.ApplyConfiguration(new WorkExperienceConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new UsersRolConfiguration());
         }
     }
 }
