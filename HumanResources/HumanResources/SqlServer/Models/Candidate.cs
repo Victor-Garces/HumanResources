@@ -20,8 +20,7 @@ namespace HumanResources.SqlServer.Models
 
         public string RecommendBy { get; set; }
 
-        public ISet<CandidateCompetition> Competitions { get; set; }
-
-        public ISet<Training> Trainings { get; set; }
+        public ISet<CandidateCompetition> CandidateCompetitions { get; set; }
+        public ISet<CandidateTraining> CandidateTrainings { get; set; }
     }
 }
