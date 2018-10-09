@@ -10,11 +10,11 @@ namespace HumanResources.SqlServer.Configurations
         {
             builder.HasKey(employee => employee.Id);
             builder.Property(employee => employee.Id).HasDefaultValueSql("newsequentialid()");
-            builder.Property(employee => employee.Identification).IsRequired();
             builder.Property(employee => employee.AdmissionDate).HasDefaultValueSql("GetDate()");
             builder.Property(employee => employee.Department).IsRequired();
             builder.Property(employee => employee.PositionId).IsRequired();
             builder.Property(employee => employee.PositionId).IsRequired();
+            builder.Property(employee => employee.UserId).IsRequired();
         }
     }
 }

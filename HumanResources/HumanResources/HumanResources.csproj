@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20180923014812_LanguageTabl.cs" />
     <Compile Remove="Migrations\20180923014812_LanguageTabl.Designer.cs" />
+    <Compile Remove="Migrations\20181009032736_AddedUserTable.cs" />
+    <Compile Remove="Migrations\20181009032736_AddedUserTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
