@@ -13,6 +13,7 @@ namespace HumanResources.SqlServer.Configurations
             builder.Property(user => user.Identification).IsRequired();
             builder.Property(user => user.Name).IsRequired();
             builder.Property(user => user.Lastname).IsRequired();
+            builder.Property(user => user.Email).IsRequired();
             builder.Property(user => user.Password).IsRequired();
         }
     }

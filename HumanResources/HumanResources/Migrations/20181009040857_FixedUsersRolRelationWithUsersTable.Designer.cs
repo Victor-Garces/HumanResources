@@ -4,14 +4,16 @@ using HumanResources.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HumanResources.Migrations
 {
     [DbContext(typeof(HumanResourceContext))]
-    partial class HumanResourceContextModelSnapshot : ModelSnapshot
+    [Migration("20181009040857_FixedUsersRolRelationWithUsersTable")]
+    partial class FixedUsersRolRelationWithUsersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

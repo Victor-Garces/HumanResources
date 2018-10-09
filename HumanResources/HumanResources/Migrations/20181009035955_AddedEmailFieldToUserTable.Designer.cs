@@ -4,14 +4,16 @@ using HumanResources.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HumanResources.Migrations
 {
     [DbContext(typeof(HumanResourceContext))]
-    partial class HumanResourceContextModelSnapshot : ModelSnapshot
+    [Migration("20181009035955_AddedEmailFieldToUserTable")]
+    partial class AddedEmailFieldToUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -329,12 +331,12 @@ namespace HumanResources.Migrations
             modelBuilder.Entity("HumanResources.SqlServer.Models.UsersRol", b =>
                 {
                     b.HasOne("HumanResources.SqlServer.Models.Rol", "Rol")
-                        .WithMany("UsersRol")
+                        .WithMany()
                         .HasForeignKey("RolId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HumanResources.SqlServer.Models.User", "User")
-                        .WithMany("UsersRol")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

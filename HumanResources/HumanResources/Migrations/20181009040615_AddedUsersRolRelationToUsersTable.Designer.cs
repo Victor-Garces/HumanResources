@@ -4,14 +4,16 @@ using HumanResources.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HumanResources.Migrations
 {
     [DbContext(typeof(HumanResourceContext))]
-    partial class HumanResourceContextModelSnapshot : ModelSnapshot
+    [Migration("20181009040615_AddedUsersRolRelationToUsersTable")]
+    partial class AddedUsersRolRelationToUsersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,6 +186,8 @@ namespace HumanResources.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<Guid>("UsersRolId");
+
                     b.HasKey("Id");
 
                     b.ToTable("Rol");
@@ -233,6 +237,8 @@ namespace HumanResources.Migrations
                     b.Property<string>("Password")
                         .IsRequired();
 
+                    b.Property<Guid>("UsersRolId");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -246,7 +252,11 @@ namespace HumanResources.Migrations
 
                     b.HasKey("UserId", "RolId");
 
-                    b.HasIndex("RolId");
+                    b.HasIndex("RolId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("UsersRol");
                 });
@@ -329,13 +339,13 @@ namespace HumanResources.Migrations
             modelBuilder.Entity("HumanResources.SqlServer.Models.UsersRol", b =>
                 {
                     b.HasOne("HumanResources.SqlServer.Models.Rol", "Rol")
-                        .WithMany("UsersRol")
-                        .HasForeignKey("RolId")
+                        .WithOne("UsersRol")
+                        .HasForeignKey("HumanResources.SqlServer.Models.UsersRol", "RolId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HumanResources.SqlServer.Models.User", "User")
-                        .WithMany("UsersRol")
-                        .HasForeignKey("UserId")
+                        .WithOne("UsersRol")
+                        .HasForeignKey("HumanResources.SqlServer.Models.UsersRol", "UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
