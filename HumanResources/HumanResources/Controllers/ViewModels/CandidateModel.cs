@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using HumanResources.SqlServer.Models;
 
-namespace HumanResources.SqlServer.Models
+namespace HumanResources.Controllers.ViewModels
 {
-    public sealed class Candidate
+    public sealed class CandidateModel
     {
         public Guid Id { get; set; }
         public string Identification { get; set; }
@@ -19,7 +20,7 @@ namespace HumanResources.SqlServer.Models
 
         public string RecommendBy { get; set; }
 
-        public ISet<CandidateCompetition> CandidateCompetitions { get; set; }
-        public ISet<CandidateTraining> CandidateTrainings { get; set; }
+        public ISet<Competition> Competitions { get; set; }
+        public ISet<Training> Trainings { get; set; }
     }
 }

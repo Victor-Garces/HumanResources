@@ -11,7 +11,6 @@ namespace HumanResources.Validators
             RuleFor(candidate => candidate.PositionId).NotEmpty();
             RuleFor(candidate => candidate.Identification).NotEmpty();
             RuleFor(candidate => candidate.Name).NotEmpty();
-            RuleFor(candidate => candidate.WorkExperienceId).NotEmpty();
             RuleFor(candidate => candidate.AspiratedSalary).NotEmpty();
         }
     }

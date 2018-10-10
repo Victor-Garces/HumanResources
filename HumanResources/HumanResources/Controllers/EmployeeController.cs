@@ -1,50 +1,51 @@
-﻿using HumanResources.SqlServer;
-using HumanResources.SqlServer.Models;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using HumanResources.Controllers.ViewModels;
+using HumanResources.SqlServer;
+using HumanResources.SqlServer.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace HumanResources.Controllers
 {
-    [Route("api/candidate")]
-    public class CandidateController : Controller
+    [Route("api/employee")]
+    public class EmployeeController : Controller
     {
         readonly HumanResourceContext _humanResourcesContext;
 
-        public CandidateController(HumanResourceContext humanResourcesContext)
+        public EmployeeController(HumanResourceContext humanResourcesContext)
             => _humanResourcesContext = humanResourcesContext;
 
         [HttpPost]
-        public IActionResult CreateCandidate([FromBody] CandidateModel candidateModel)
+        public IActionResult CreateEmployee([FromBody] EmployeeModel employeeModel)
         {
-            if (!ModelState.IsValid)
+            var employee = new Employee
             {
-                return BadRequest("Invalid candidate");
-            }
-
-            var candidate = new Candidate
-            {
-                WorkExperiences = candidateModel.WorkExperiences ?? new HashSet<WorkExperience>(),
-                PositionId = candidateModel.PositionId,
-                AspiratedSalary = candidateModel.AspiratedSalary,
-                Department = candidateModel.Department,
-                Identification = candidateModel.Identification,
-                Name = candidateModel.Name,
-                RecommendBy = candidateModel.RecommendBy,
-                CandidateCompetitions = candidateModel.Competitions.Select(value => new CandidateCompetition
+                PositionId = employeeModel.Candidate.PositionId,
+                AdmissionDate = DateTime.Now,
+                Department = employeeModel.Candidate.Department,
+                IsActive = true,
+                MonthlySalary = employeeModel.MothlySalary,
+                User = new User
                 {
-                    CompetitionId = value.Id
-                }).ToHashSet() ?? new HashSet<CandidateCompetition>(),
-                CandidateTrainings = candidateModel.Trainings.Select(value => new CandidateTraining
-                {
-                    TrainingId = value.Id
-                }).ToHashSet() ?? new HashSet<CandidateTraining>()
+                    Identification = employeeModel.Candidate.Identification,
+                    Password = employeeModel.Candidate.Name,
+                    Email = employeeModel.Email,
+                    Name = employeeModel.Candidate.Name,
+                    Lastname = "",
+                    UsersRol = new HashSet<UsersRol>
+                    {
+                        new UsersRol
+                        {
+                            RolId = Guid.Parse("B838A516-8822-41A8-BEE3-F91EB3FEA2D0")
+                        }
+                    }
+                }
             };
 
-            _humanResourcesContext.Candidates.Add(candidate);
+            _humanResourcesContext.Employees.Add(employee);
             _humanResourcesContext.SaveChanges();
 
             return Ok("Candidate saved successfully");
@@ -71,18 +72,17 @@ namespace HumanResources.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllCandidates()
+        public IActionResult GetEmployees()
         {
-            ISet<Candidate> candidates = _humanResourcesContext.Candidates
-                .Include(c => c.Position)
+            ISet<Employee> employees = _humanResourcesContext.Employees
                 .ToHashSet();
 
-            if (candidates.Count == 0)
+            if (employees.Count == 0)
             {
-                return BadRequest("Candidates not found");
+                return BadRequest("Employees not found");
             }
 
-            return Ok(candidates);
+            return Ok(employees);
         }
 
         [HttpPut("{candidateId}")]

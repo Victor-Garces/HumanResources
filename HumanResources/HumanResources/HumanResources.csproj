@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20180923014812_LanguageTabl.Designer.cs" />
     <Compile Remove="Migrations\20181009032736_AddedUserTable.cs" />
     <Compile Remove="Migrations\20181009032736_AddedUserTable.Designer.cs" />
+    <Compile Remove="Migrations\20181010033106_AddedWorkExperiencesRelationToCandidateTable.cs" />
+    <Compile Remove="Migrations\20181010033106_AddedWorkExperiencesRelationToCandidateTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
