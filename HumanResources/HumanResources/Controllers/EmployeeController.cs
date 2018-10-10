@@ -71,10 +71,12 @@ namespace HumanResources.Controllers
             return Ok(candidate);
         }
 
-        [HttpGet]
-        public IActionResult GetEmployees()
+        [HttpPost("report")]
+        public IActionResult GetEmployees(EmployeesByDateModel dateModel)
         {
-            ISet<Employee> employees = _humanResourcesContext.Employees
+            ISet<Employee> employees = _humanResourcesContext.Employees.Include(employee => employee.User).Include(employee => employee.Position)
+                //.Where(employee => employee.AdmissionDate >= dateModel.StartDateTime
+                // && employee.AdmissionDate <= dateModel.EndDateTime)
                 .ToHashSet();
 
             if (employees.Count == 0)
